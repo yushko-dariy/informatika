@@ -1,0 +1,11 @@
+def sum_interval(a, b):
+    low = min(a, b)
+    high = max(a, b)
+
+    count = high - low + 1
+    total_sum = (low + high) * count // 2
+    return total_sum
+
+user_a = int(input("User insert a: "))
+user_b = int(input("User insert b: "))
+print("Result:", sum_interval(user_a, user_b))
