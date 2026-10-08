@@ -1,0 +1,26 @@
+from math import factorial
+
+def is_strong(n):
+    if n <= 0:
+        return False
+    
+    sum_of_factorials = sum(factorial(int(digit)) for digit in str(n))
+    
+    return sum_of_factorials == n
+
+if __name__ == "__main__":
+    print("--- Проверка одного числа ---")
+    user_input = input("Введите целое число для проверки: ")
+    
+    if user_input.isdigit():
+        num = int(user_input)
+        print(f"Число {num} является сильным? -> {is_strong(num)}")
+    else:
+        print("Ошибка: введите корректное положительное число.")
+        
+    print("\n--- Запуск перебора до 100 000 ---")
+    print("Ищем все сильные числа в диапазоне от 1 до 100 000...")
+    
+    strong_numbers = [i for i in range(1, 100000) if is_strong(i)]
+    
+    print("Найденные сильные числа:", strong_numbers)
