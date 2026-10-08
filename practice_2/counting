@@ -1,0 +1,32 @@
+def factorial(n):
+    if n < 0:
+        return None
+    if n == 0:
+        return 1
+    
+    result = 1
+    for i in range (1, n + 1):
+        result *= i
+    return result
+
+def arrangements(n, k):
+    if k > n or k < 0 or n < 0:
+        return 0
+    return factorial(n) // factorial(n - k)
+
+def combinations(n, k):
+    if k > n or k < 0 or n < 0:
+        return 0
+    return factorial(n) // ( factorial(k) *  factorial(n - k) )
+
+n = int(input("введите n:"))
+k = int(input("введите k:"))
+
+fact_n = factorial(n) 
+arr_nk = arrangements(n,k)
+comb_nk = combinations(n,k) 
+
+print(f" n={n}, k={k}")
+print(f"факториал ({n}!: {fact_n})")
+print(f"результат размещения (из {n} по {k}): {arr_nk}") 
+print(f"результат сочетания (из {n} по {k}): {comb_nk}")
