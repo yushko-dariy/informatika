@@ -1,0 +1,39 @@
+from data.morse import morse
+reverse_morse = {value: key for key, value in morse.items()}
+
+def to_morse(text):
+    result = []
+    for char in text:
+        if char == " ":
+            result.append("/")
+        elif char in morse:
+            result.append(morse[char])
+    
+    return " ".join(result).replace(" / ", " / ")
+
+
+def from_morse(code):
+    result = []
+    
+    words = code.split(" / ")
+
+    for word in words:
+    
+        letters = word.split(" ")
+        decoded_word = "".join(reverse_morse[letter] for letter in letters if letter in reverse_morse)
+        result.append(decoded_word)
+
+    return " ".join(result)
+
+
+if __name__ == "__main__":
+    print("--- Переводчик Азбуки Морзе ---")
+    
+    user_text = input("Введите текст на английском (ЗАГЛАВНЫМИ БУКВАМИ и цифрами): ").upper()
+    
+    if user_text:
+        morse_code = to_morse(user_text)
+        print(f"\nКод Морзе:\n{morse_code}")
+        decoded_text = from_morse(morse_code)
+        print(f"\nПроверка обратного перевода:\n{decoded_text}")
+        print(f"Совпадает с исходным текстом? -> {decoded_text == user_text}")
