@@ -1,0 +1,17 @@
+def pasture_area(wire, w):
+    l = (wire - 2 * w) /3
+    return w * l
+
+def best_pasture(wire):
+    w = wire / 4
+    l = (wire - 2 * w) / 3  
+    area = w * l
+    return (w, l, area)
+
+wire_input = float(input("Сколько метров проволоки ? "))
+opt_w, opt_l, max_area = best_pasture(wire_input)
+
+print("Оптимальные размеры загона:")
+print("Ширина:", opt_w)
+print("Длина:", opt_l)
+print("Максимальная площадь:", max_area)
