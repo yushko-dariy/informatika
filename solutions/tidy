@@ -1,0 +1,14 @@
+def is_tidy(n):
+    s = str(n)
+    return s == "".join(sorted(s))
+
+if __name__ == "__main__":
+    print("--- Проверка чисел на 'аккуратность' ---")
+    
+    user_input = input("Введите целое положительное число: ")
+    
+    if user_input.isdigit():
+        num = int(user_input)
+        print(f"Число {num} аккуратное? -> {is_tidy(num)}")
+    else:
+        print("Ошибка: нужно ввести только цифры.")
