@@ -1,0 +1,36 @@
+import random
+
+def birthday_probability(people):
+    if people > 365:
+        return 1.0
+    if people <= 1:
+        return 0.0
+
+    unique_ways = 1.0
+    for i in range(people):
+        unique_ways *= (365 - i) / 365
+
+    return 1.0 - unique_ways  
+
+def simulate_birthday(people, trials):
+    if people <= 1:
+        return 0.0
+
+    matches = 0
+    for _ in range(trials):
+        birthday = [random.randint(1, 365) for _ in range(people)]
+        if len(set(birthday)) < people:  
+            matches += 1
+
+    return matches / trials  
+
+people_count = int(input("Введите кол-во людей: "))
+trials_count = int(input("Введите кол-во симуляций: "))
+
+math_prob = birthday_probability(people_count)
+sim_prob = simulate_birthday(people_count, trials_count)  
+
+print(f"\nСравнение результатов для {people_count} человек:")
+print(f" Математический расчет (в долях): {math_prob:.4f}")
+print(f" Математический расчет (в процентах): {math_prob * 100:.2f}%")
+print(f" Симуляция (в процентах): {sim_prob * 100:.2f}%")
