@@ -1,0 +1,21 @@
+def is_automorphic(n):
+    if n < 0:
+        return False
+        
+    square = n ** 2
+    
+    digits_count = len(str(n))
+    mod = 10 ** digits_count
+    
+    return square % mod == n
+
+if __name__ == "__main__":
+    print("--- Проверка чисел на автоморфность ---")
+    
+    user_input = input("Введите целое положительное число: ")
+    
+    if user_input.isdigit():
+        num = int(user_input)
+        print(f"Число {num} автоморфное? -> {is_automorphic(num)}")
+    else:
+        print("Ошибка: пожалуйста, введите корректное число.")

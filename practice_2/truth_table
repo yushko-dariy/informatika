@@ -1,0 +1,11 @@
+import itertools
+
+def generate_truth_table(n):
+    return list(itertools.product([0, 1], repeat=n))
+
+n_vars = int(input("Введите количество логических переменных (n): "))
+table = generate_truth_table(n_vars)
+
+print(f"\nТаблица истинности для n = {n_vars}:")
+for row in table:
+    print(row)

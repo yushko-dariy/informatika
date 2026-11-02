@@ -1,0 +1,44 @@
+import itertools
+def are_equivalent(f, g, n):
+    for row in itertools.product((0, 1), repeat=n):
+        if f(*row) != g(*row):
+            return False
+    return True
+
+def implies(a, b):
+    return (not a) or b
+
+def de_morgan_1_left(a, b):
+    return not (a and b)
+
+def de_morgan_1_right(a, b):
+    return (not a) or (not b)
+
+def de_morgan_2_left(a, b):
+    return not (a or b)
+
+def de_morgan_2_right(a, b):
+    return (not a) and (not b)
+
+def impl_disj_left(a, b):
+    return implies(a, b)
+
+def impl_disj_right(a, b):
+    return (not a) or b
+
+def contraposition_left(a, b):
+    return implies(a, b)
+
+def contraposition_right(a, b):
+    return implies(not b, not a)
+
+n_vars = int(input("Введите количество переменных n для проверки (минимум 2): "))
+res1 = are_equivalent(de_morgan_1_left, de_morgan_1_right, 2)
+res2 = are_equivalent(de_morgan_2_left, de_morgan_2_right, 2)
+res3 = are_equivalent(impl_disj_left, impl_disj_right, 2)
+res4 = are_equivalent(contraposition_left, contraposition_right, 2)
+    
+print(f"1. Первый закон де Моргана:       {res1}")
+print(f"2. Второй закон де Моргана:       {res2}")
+print(f"3. Импликация через дизъюнкцию:   {res3}")
+print(f"4. Закон контрапозиции:           {res4}")

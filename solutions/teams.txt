@@ -1,0 +1,12 @@
+def team_weights(weights):
+    team1 = sum(weights[0::2])
+    team2 = sum(weights[1::2])
+    return team1, team2
+
+user_input = input("User insert values: ")
+items = []
+
+for x in user_input.split():
+    items.append(float(x))
+
+print("Result:", team_weights(items))
